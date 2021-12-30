@@ -1,22 +1,27 @@
-<body>
-    <div class="container mt-5 w-50 ">
-        <h1 class="text-center text-Secondary ">LOGIN PAGE</h1>
-        <div class="row mt-5">
-            <div class="col-3"></div>
-            <div class="col-6">
-                <div class="mb-3"><input type="text" class="form-control" placeholder="Enter Account Number"  id="bk_username"></div>
-                <div class="mb-3"><input type="password" class="form-control" placeholder="Enter Password" id="bk_password"></div>
-                <div class="mb-3"><button class="btn btn-success" onclick="bank.login()">Login</button></div>
+    <nav class="navbar text-light  navbar-light bg-dark">
+        <div class="container-fluid container">
+        <span class="navbar-brand text-info mb-0 fs-2">BankApp</span>
+        <div class="text-center fs-4">{{aim}}</div>
+
+        </div>
+    </nav>
+    <div class="container log w-50 p-3 bg-dark bg-opacity-50">
+        <h1 class="text-center text-light ">LOGIN PAGE</h1>
+        <div class="row mt-3">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="mb-3"><input type="text" [(ngModel)]="acno" class="form-control" placeholder="Enter Account Number"  id="bk_username"></div>
+                <div class="mb-3"><input type="password" [(ngModel)]="pass" class="form-control" placeholder="Enter Password" id="bk_password"></div>
+                <div class="mb-3"><button class="btn btn-success" (click)="login()">Login</button></div>
     
-                <a href="./registration.html">New here? Create Account</a>
+                <p class="text-light text-decorations-none" >New here? <a routerLink="register">Create Account</a></p>
                 
     
             </div>
-            <div class="col-3"></div>
+            <div class="col-lg-4"></div>
         </div>
     
     
     
     </div>
 
-</body>

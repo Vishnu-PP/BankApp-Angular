@@ -1,0 +1,27 @@
+<nav class="navbar text-light  navbar-light bg-dark">
+    <div class="container-fluid container">
+    <span class="navbar-brand text-info mb-0 fs-2">BankApp</span>
+    <div class="text-center fs-4"></div>
+
+    </div>
+</nav>
+<div class="container log w-50 p-3 bg-dark bg-opacity-50">
+    <h1 class="text-center text-light ">SIGN UP PAGE</h1>
+    <div class="row mt-3">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <div class="mb-3"><input type="text" [(ngModel)]="uname" class="form-control" placeholder="Enter Username"  id="bk_username"></div>
+            <div class="mb-3"><input type="text" [(ngModel)]="acno" class="form-control" placeholder="Enter Account Number"  id="bk_acno"></div>
+            <div class="mb-3"><input type="password" [(ngModel)]="pass" class="form-control" placeholder="Enter Password" id="bk_password"></div>
+            <div class="mb-3"><button class="btn btn-success" (click)="register()">Register</button></div>
+
+            <p class="text-light text-decorations-none" >Already a user? <a routerLink="">login</a></p>
+            
+
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+
+
+</div>
