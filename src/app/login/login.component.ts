@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,15 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   aim="Your Perfect Banking Partner"
+
+  
   acno=""
   pass=""
-  users:any={
-    1000:{acno:1000,uname:"vishnu",password:1000,balance:5000},
-    1001:{acno:1001,uname:"vinu",password:1001,balance:5000},
-    1002:{acno:1002,uname:"anu",password:1002,balance:5000}
-  }
-
-  constructor(private router:Router) { }
+  loginForm = this.fb.group({
+    acno:['',[Validators.required, Validators.pattern('[0-9]*')]],
+    pass:['',[Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
+  })
+  constructor(private router:Router, private ds:DataService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -33,24 +35,23 @@ export class LoginComponent implements OnInit {
 
   // }
   login(){
-    var acno = this.acno
-    var pass = this.pass
+    var acno = this.loginForm.value.acno
+    var pass = this.loginForm.value.pass
 
-    let database = this.users
+    if(this.loginForm.valid){
 
-    if(acno in database){
-      if(pass == database[acno]["password"]){
-        alert("login success")
-        this.router.navigateByUrl('home')
-
-      }
-      else{
-        alert("incorrect password")
-      }
+     let result = this.ds.login(acno,pass)
+     if(result){
+       alert("login success")
+       
+       this.router.navigateByUrl('home')
+    }
     }
     else{
-      alert("invalid account")
+      alert("invalid Form")
     }
+
+    
     
   }
 

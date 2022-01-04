@@ -1,3 +1,6 @@
 .log{
     margin-top: 150px;
 }
+.error{
+    color: #f44336;
+}
