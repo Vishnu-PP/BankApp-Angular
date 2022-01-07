@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 export class DataService {
 
   currentUserName:any
+  currentAcno:any
 
   users:any={
     1000:{acno:1000,uname:"VISHNU",password:1000,balance:5000,transaction:[]},
@@ -20,6 +21,11 @@ export class DataService {
     this.getDetails()
    }
 
+   getTransaction(){
+
+    return this.users[this.currentAcno].transaction
+   }
+
   //to store in local storage 
   saveDetails(){
     if(this.users){
@@ -27,6 +33,9 @@ export class DataService {
     }
     if(this.currentUserName){
       localStorage.setItem("cUserName",JSON.stringify(this.currentUserName))
+    }
+    if(this.currentAcno){
+      localStorage.setItem("cAcno",JSON.stringify(this.currentAcno))
     }
   }
 
@@ -37,6 +46,9 @@ export class DataService {
     }
     if(localStorage.getItem("cUserName")){
       this.currentUserName = JSON.parse(localStorage.getItem("cUserName") || '')
+    }
+    if(localStorage.getItem("cAcno")){
+      this.currentAcno = JSON.parse(localStorage.getItem("cAcno") || '')
     }
   }
 
@@ -73,6 +85,7 @@ export class DataService {
 
     if(acno in database){
       if(password == database[acno]["password"]){
+        this.currentAcno = acno
         this.currentUserName =database[acno]["uname"]
         this.saveDetails()
         return true
@@ -89,6 +102,10 @@ export class DataService {
       alert("invalid account")
       return false
     }
+  }
+
+  balance(){
+    return this.users[this.currentAcno].balance
   }
 
   //deposit

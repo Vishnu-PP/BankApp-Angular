@@ -1,24 +1,28 @@
-<div class="container bg-dark text-center bg-opacity-50 mt-4">
+<div class="container w-50 bg-dark text-center bg-opacity-75 mt-4">
     <h1 class="text-light">Transaction History</h1>
 
     <div class="text-center row table text-info">
-        <div class="col"></div>
-        <table class="border">
+        
+        <table class="border w-100">
             <thead>
                 <tr>
-                    <th>Amount</th>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <th>Sl.No</th>
+                    <th>Amount</th>
                     <th>Type</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th class="text-light">1000</th>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <th class="text-light">credit</th>
+                <tr *ngFor="let transaction of transactions; let i=index;">
+                    <th class="text-light">{{i+1}}</th>
+                    <th class="text-light">{{transaction.amount}}</th>
+                    <th class="text-light">{{transaction.Type}}</th>
                 </tr>
+               
             </tbody>
 
         </table>
     </div>
+    <button class="btn  btn-success mt-3 mb-4" routerLink="/home">BACK</button>
 
 
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-transaction',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionComponent implements OnInit {
 
-  constructor() { }
+  transactions:any
+  constructor(private ds:DataService) { 
+
+    this.transactions = this.ds.getTransaction()
+    console.log(this.transactions);
+    
+  }
 
   ngOnInit(): void {
   }

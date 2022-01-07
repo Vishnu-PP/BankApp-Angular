@@ -42,6 +42,11 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('')
   }
 
+  balance(){
+    let result=this.ds.balance()
+    alert("Your Available Balance is:"+ result)
+  }
+
   deposit(){
     var amount=this.depositForm.value.amount
     var acno=this.depositForm.value.acno
